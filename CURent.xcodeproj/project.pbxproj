@@ -13,6 +13,7 @@
 		203CCF302091236600616EF2 /* CURent.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 203CCF2E2091236600616EF2 /* CURent.xcdatamodeld */; };
 		203CCF322091236700616EF2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 203CCF312091236700616EF2 /* Assets.xcassets */; };
 		203CCF352091236700616EF2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 203CCF332091236700616EF2 /* LaunchScreen.storyboard */; };
+		5B4F7A8AFDAF4A3BCDD1465E /* Pods_CURent.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 810224C4754021B01FA61915 /* Pods_CURent.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,9 @@
 		203CCF312091236700616EF2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		203CCF342091236700616EF2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		203CCF362091236700616EF2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		810224C4754021B01FA61915 /* Pods_CURent.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CURent.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		995C42D1ACC622DF0BD95724 /* Pods-CURent.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CURent.release.xcconfig"; path = "Pods/Target Support Files/Pods-CURent/Pods-CURent.release.xcconfig"; sourceTree = "<group>"; };
+		A931C626B481AC49F38AE364 /* Pods-CURent.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CURent.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CURent/Pods-CURent.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +35,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5B4F7A8AFDAF4A3BCDD1465E /* Pods_CURent.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -42,6 +47,8 @@
 			children = (
 				203CCF262091236600616EF2 /* CURent */,
 				203CCF252091236600616EF2 /* Products */,
+				7BE29587C9842885B98D4EFB /* Pods */,
+				5FBBE770DCC5A55956DD113E /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -67,6 +74,23 @@
 			path = CURent;
 			sourceTree = "<group>";
 		};
+		5FBBE770DCC5A55956DD113E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				810224C4754021B01FA61915 /* Pods_CURent.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		7BE29587C9842885B98D4EFB /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				A931C626B481AC49F38AE364 /* Pods-CURent.debug.xcconfig */,
+				995C42D1ACC622DF0BD95724 /* Pods-CURent.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -74,9 +98,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 203CCF392091236700616EF2 /* Build configuration list for PBXNativeTarget "CURent" */;
 			buildPhases = (
+				FE8923B696EDE1B3B7BECDD3 /* [CP] Check Pods Manifest.lock */,
 				203CCF202091236600616EF2 /* Sources */,
 				203CCF212091236600616EF2 /* Frameworks */,
 				203CCF222091236600616EF2 /* Resources */,
+				E986ADD421B50AF0C0F4D00D /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -132,6 +158,47 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		E986ADD421B50AF0C0F4D00D /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-CURent/Pods-CURent-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CURent/Pods-CURent-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FE8923B696EDE1B3B7BECDD3 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-CURent-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		203CCF202091236600616EF2 /* Sources */ = {
@@ -282,15 +349,13 @@
 		};
 		203CCF3A2091236700616EF2 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A931C626B481AC49F38AE364 /* Pods-CURent.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = Q39NW5M7GW;
 				INFOPLIST_FILE = CURent/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.curent.CURent;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -300,15 +365,13 @@
 		};
 		203CCF3B2091236700616EF2 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 995C42D1ACC622DF0BD95724 /* Pods-CURent.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = Q39NW5M7GW;
 				INFOPLIST_FILE = CURent/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.curent.CURent;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
