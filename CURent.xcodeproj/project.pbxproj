@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		203CCF282091236600616EF2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 203CCF272091236600616EF2 /* AppDelegate.swift */; };
 		203CCF2A2091236600616EF2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 203CCF292091236600616EF2 /* ViewController.swift */; };
-		203CCF2D2091236600616EF2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 203CCF2B2091236600616EF2 /* Main.storyboard */; };
 		203CCF302091236600616EF2 /* CURent.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 203CCF2E2091236600616EF2 /* CURent.xcdatamodeld */; };
 		203CCF322091236700616EF2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 203CCF312091236700616EF2 /* Assets.xcassets */; };
 		203CCF352091236700616EF2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 203CCF332091236700616EF2 /* LaunchScreen.storyboard */; };
@@ -20,7 +19,6 @@
 		203CCF242091236600616EF2 /* CURent.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CURent.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		203CCF272091236600616EF2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		203CCF292091236600616EF2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		203CCF2C2091236600616EF2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		203CCF2F2091236600616EF2 /* CURent.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CURent.xcdatamodel; sourceTree = "<group>"; };
 		203CCF312091236700616EF2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		203CCF342091236700616EF2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -65,7 +63,6 @@
 			children = (
 				203CCF272091236600616EF2 /* AppDelegate.swift */,
 				203CCF292091236600616EF2 /* ViewController.swift */,
-				203CCF2B2091236600616EF2 /* Main.storyboard */,
 				203CCF312091236700616EF2 /* Assets.xcassets */,
 				203CCF332091236700616EF2 /* LaunchScreen.storyboard */,
 				203CCF362091236700616EF2 /* Info.plist */,
@@ -102,7 +99,6 @@
 				203CCF202091236600616EF2 /* Sources */,
 				203CCF212091236600616EF2 /* Frameworks */,
 				203CCF222091236600616EF2 /* Resources */,
-				E986ADD421B50AF0C0F4D00D /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -153,33 +149,12 @@
 			files = (
 				203CCF352091236700616EF2 /* LaunchScreen.storyboard in Resources */,
 				203CCF322091236700616EF2 /* Assets.xcassets in Resources */,
-				203CCF2D2091236600616EF2 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		E986ADD421B50AF0C0F4D00D /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-CURent/Pods-CURent-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
-				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CURent/Pods-CURent-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		FE8923B696EDE1B3B7BECDD3 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -214,14 +189,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		203CCF2B2091236600616EF2 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				203CCF2C2091236600616EF2 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		203CCF332091236700616EF2 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -355,7 +322,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = Q39NW5M7GW;
 				INFOPLIST_FILE = CURent/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.curent.CURent;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -371,7 +341,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = Q39NW5M7GW;
 				INFOPLIST_FILE = CURent/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.curent.CURent;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
