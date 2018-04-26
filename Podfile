@@ -8,5 +8,7 @@ target 'CURent' do
   # Pods for CURent
   pod 'Alamofire'
   pod 'SwiftyJSON'
+  pod 'GoogleSignIn'
+  pod 'ChameleonFramework/Swift'
 
 end

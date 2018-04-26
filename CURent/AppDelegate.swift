@@ -8,16 +8,50 @@
 
 import UIKit
 import CoreData
+import GoogleSignIn
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
 
     var window: UIWindow?
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        
+        window = UIWindow(frame: UIScreen.main.bounds)
+        window?.rootViewController = UINavigationController(rootViewController: SignInViewController())
+        window?.makeKeyAndVisible()
+        
+        //initialize sign-in
+        GIDSignIn.sharedInstance().clientID = "1038870228728-bbqpbhvmt6bf3vo4pkf4us1i9d3b9sch.apps.googleusercontent.com"
+        GIDSignIn.sharedInstance().delegate = self
         // Override point for customization after application launch.
         return true
+    }
+    
+    func application(_ app: UIApplication,
+                     open url: URL,
+                     options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
+        return GIDSignIn.sharedInstance().handle(url as URL?,
+                                                     sourceApplication: options[UIApplicationOpenURLOptionsKey.sourceApplication] as! String?,
+                                                     annotation: options[UIApplicationOpenURLOptionsKey.annotation])
+    }
+    
+    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!,
+              withError error: Error!) {
+        if let error = error {
+            print("\(error.localizedDescription)")
+        } else {
+            // Perform any operations on signed in user here.
+            let userId = user.userID                  // For client-side use only!
+            let idToken = user.authentication.idToken // Safe to send to the server
+            let fullName = user.profile.name
+            let givenName = user.profile.givenName
+            let familyName = user.profile.familyName
+            let email = user.profile.email
+            // ...
+            present(, animated: true, completion: nil)
+        }
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
