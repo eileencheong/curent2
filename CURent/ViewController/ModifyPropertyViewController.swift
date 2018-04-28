@@ -1,14 +1,14 @@
 //
-//  BrowserViewController.swift
+//  ModifyPropertyViewController.swift
 //  CURent
 //
-//  Created by Jaewon Sim on 4/26/18.
+//  Created by Jaewon Sim on 4/28/18.
 //  Copyright © 2018 CURent. All rights reserved.
 //
 
 import UIKit
 
-class BrowserViewController: UIViewController {
+class ModifyPropertyViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

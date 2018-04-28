@@ -12,7 +12,11 @@
 		203CCF302091236600616EF2 /* CURent.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 203CCF2E2091236600616EF2 /* CURent.xcdatamodeld */; };
 		203CCF322091236700616EF2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 203CCF312091236700616EF2 /* Assets.xcassets */; };
 		203CCF352091236700616EF2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 203CCF332091236700616EF2 /* LaunchScreen.storyboard */; };
-		203CCF3D2091931E00616EF2 /* BrowserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 203CCF3C2091931E00616EF2 /* BrowserViewController.swift */; };
+		203CCF3F2091A0F900616EF2 /* BrowserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 203CCF3E2091A0F900616EF2 /* BrowserViewController.swift */; };
+		207F7ABB2094592400DE50F9 /* PropertyCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207F7ABA2094592400DE50F9 /* PropertyCollectionViewCell.swift */; };
+		207F7AC22094689600DE50F9 /* Property.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207F7AC12094689600DE50F9 /* Property.swift */; };
+		207F7AC620946CA300DE50F9 /* SampleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207F7AC520946CA300DE50F9 /* SampleData.swift */; };
+		207F7AC82094737500DE50F9 /* ModifyPropertyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207F7AC72094737500DE50F9 /* ModifyPropertyViewController.swift */; };
 		5B4F7A8AFDAF4A3BCDD1465E /* Pods_CURent.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 810224C4754021B01FA61915 /* Pods_CURent.framework */; };
 /* End PBXBuildFile section */
 
@@ -24,7 +28,11 @@
 		203CCF312091236700616EF2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		203CCF342091236700616EF2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		203CCF362091236700616EF2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		203CCF3C2091931E00616EF2 /* BrowserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowserViewController.swift; sourceTree = "<group>"; };
+		203CCF3E2091A0F900616EF2 /* BrowserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowserViewController.swift; sourceTree = "<group>"; };
+		207F7ABA2094592400DE50F9 /* PropertyCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyCollectionViewCell.swift; sourceTree = "<group>"; };
+		207F7AC12094689600DE50F9 /* Property.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Property.swift; sourceTree = "<group>"; };
+		207F7AC520946CA300DE50F9 /* SampleData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleData.swift; sourceTree = "<group>"; };
+		207F7AC72094737500DE50F9 /* ModifyPropertyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModifyPropertyViewController.swift; sourceTree = "<group>"; };
 		810224C4754021B01FA61915 /* Pods_CURent.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CURent.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		995C42D1ACC622DF0BD95724 /* Pods-CURent.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CURent.release.xcconfig"; path = "Pods/Target Support Files/Pods-CURent/Pods-CURent.release.xcconfig"; sourceTree = "<group>"; };
 		A931C626B481AC49F38AE364 /* Pods-CURent.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CURent.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CURent/Pods-CURent.debug.xcconfig"; sourceTree = "<group>"; };
@@ -63,15 +71,35 @@
 		203CCF262091236600616EF2 /* CURent */ = {
 			isa = PBXGroup;
 			children = (
+				207F7AC0209461D800DE50F9 /* ViewController */,
+				207F7ABD20945D0700DE50F9 /* Model */,
 				203CCF272091236600616EF2 /* AppDelegate.swift */,
-				203CCF3C2091931E00616EF2 /* BrowserViewController.swift */,
-				203CCF292091236600616EF2 /* SignInViewController.swift */,
 				203CCF312091236700616EF2 /* Assets.xcassets */,
 				203CCF332091236700616EF2 /* LaunchScreen.storyboard */,
 				203CCF362091236700616EF2 /* Info.plist */,
 				203CCF2E2091236600616EF2 /* CURent.xcdatamodeld */,
 			);
 			path = CURent;
+			sourceTree = "<group>";
+		};
+		207F7ABD20945D0700DE50F9 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				207F7AC12094689600DE50F9 /* Property.swift */,
+				207F7AC520946CA300DE50F9 /* SampleData.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		207F7AC0209461D800DE50F9 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				203CCF292091236600616EF2 /* SignInViewController.swift */,
+				203CCF3E2091A0F900616EF2 /* BrowserViewController.swift */,
+				207F7AC72094737500DE50F9 /* ModifyPropertyViewController.swift */,
+				207F7ABA2094592400DE50F9 /* PropertyCollectionViewCell.swift */,
+			);
+			path = ViewController;
 			sourceTree = "<group>";
 		};
 		5FBBE770DCC5A55956DD113E /* Frameworks */ = {
@@ -231,8 +259,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				207F7AC22094689600DE50F9 /* Property.swift in Sources */,
+				207F7AC620946CA300DE50F9 /* SampleData.swift in Sources */,
 				203CCF302091236600616EF2 /* CURent.xcdatamodeld in Sources */,
-				203CCF3D2091931E00616EF2 /* BrowserViewController.swift in Sources */,
+				207F7ABB2094592400DE50F9 /* PropertyCollectionViewCell.swift in Sources */,
+				203CCF3F2091A0F900616EF2 /* BrowserViewController.swift in Sources */,
+				207F7AC82094737500DE50F9 /* ModifyPropertyViewController.swift in Sources */,
 				203CCF2A2091236600616EF2 /* SignInViewController.swift in Sources */,
 				203CCF282091236600616EF2 /* AppDelegate.swift in Sources */,
 			);

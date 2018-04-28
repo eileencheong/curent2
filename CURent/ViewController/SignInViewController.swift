@@ -13,7 +13,7 @@ import UIKit
 import GoogleSignIn
 import ChameleonFramework
 
-class SignInViewController: UIViewController, GIDSignInUIDelegate {
+class SignInViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
 
     var signInButton: GIDSignInButton!
     var titleLabel: UILabel!
@@ -26,7 +26,7 @@ class SignInViewController: UIViewController, GIDSignInUIDelegate {
         
         view.backgroundColor = GradientColor(.topToBottom, frame: UIScreen.main.bounds, colors: [HexColor("#19d7fb")!, HexColor("#1e63ee")!])
         view.backgroundColor?.withAlphaComponent(0.6)
-        navigationController?.isNavigationBarHidden = true
+        
         
 //        let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
 //        backgroundImage.image = UIImage(named: "goldwin_smith.jpg")
@@ -60,6 +60,47 @@ class SignInViewController: UIViewController, GIDSignInUIDelegate {
         
         setUpConstraints()
         
+        //initialize sign-in
+        GIDSignIn.sharedInstance().clientID = "1038870228728-bbqpbhvmt6bf3vo4pkf4us1i9d3b9sch.apps.googleusercontent.com"
+        GIDSignIn.sharedInstance().delegate = self
+        
+    }
+    
+    
+
+    func application(_ app: UIApplication,
+                     open url: URL,
+                     options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
+        return GIDSignIn.sharedInstance().handle(url as URL?,
+                                                 sourceApplication: options[UIApplicationOpenURLOptionsKey.sourceApplication] as! String?,
+                                                 annotation: options[UIApplicationOpenURLOptionsKey.annotation])
+    }
+
+    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!,
+              withError error: Error!) {
+        if let error = error {
+            print("\(error.localizedDescription)")
+        } else {
+            // Perform any operations on signed in user here.
+            let userId = user.userID                  // For client-side use only!
+            let idToken = user.authentication.idToken // Safe to send to the server
+            let fullName = user.profile.name
+            let givenName = user.profile.givenName
+            let familyName = user.profile.familyName
+            let email = user.profile.email
+            
+            navigationController?.pushViewController(BrowserViewController(), animated: true)
+        }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.setNavigationBarHidden(true, animated: animated)
+        super.viewWillAppear(animated)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        self.navigationController?.setNavigationBarHidden(false, animated: animated)
+        super.viewWillDisappear(animated)
     }
 
     override func didReceiveMemoryWarning() {
@@ -85,7 +126,6 @@ class SignInViewController: UIViewController, GIDSignInUIDelegate {
             ])
         
     }
-
 
 }
 
