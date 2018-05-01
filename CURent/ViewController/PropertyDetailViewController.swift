@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import
+import GoogleMaps
 
 class PropertyDetailViewController: UIViewController {
 
