@@ -10,5 +10,7 @@ target 'CURent' do
   pod 'SwiftyJSON'
   pod 'GoogleSignIn'
   pod 'ChameleonFramework/Swift'
+  pod 'GoogleMaps'
+  pod 'GooglePlaces'
 
 end
