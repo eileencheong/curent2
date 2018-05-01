@@ -15,6 +15,7 @@ import ChameleonFramework
 
 class SignInViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
 
+    var backgroundGraphic: UIImageView!
     var signInButton: GIDSignInButton!
     var titleLabel: UILabel!
     var sloganLabel: UILabel!
@@ -24,9 +25,12 @@ class SignInViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDele
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        view.backgroundColor = GradientColor(.topToBottom, frame: UIScreen.main.bounds, colors: [HexColor("#19d7fb")!, HexColor("#1e63ee")!])
-        view.backgroundColor?.withAlphaComponent(0.6)
-        
+//        view.backgroundColor = GradientColor(.topToBottom, frame: UIScreen.main.bounds, colors: [HexColor("#19d7fb")!, HexColor("#1e63ee")!])
+//        view.backgroundColor?.withAlphaComponent(0.6)
+        backgroundGraphic = UIImageView(frame: UIScreen.main.bounds)
+        backgroundGraphic.image = #imageLiteral(resourceName: "background")
+        backgroundGraphic.contentMode = UIViewContentMode.scaleAspectFill
+        view.insertSubview(backgroundGraphic, at: 0)
         
 //        let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
 //        backgroundImage.image = UIImage(named: "goldwin_smith.jpg")
@@ -37,7 +41,7 @@ class SignInViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDele
         
         titleLabel = UILabel()
         titleLabel.text = "CURent"
-        titleLabel.textColor = ContrastColorOf(view.backgroundColor!, returnFlat: true)
+        titleLabel.textColor = .white
         titleLabel.font = UIFont.systemFont(ofSize: 48, weight: .light)
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(titleLabel)
@@ -46,7 +50,7 @@ class SignInViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDele
         sloganLabel.lineBreakMode = .byWordWrapping
         sloganLabel.numberOfLines = 3
         sloganLabel.text = "Peer-to-peer subleasing platform for Cornellians"
-        sloganLabel.textColor = ContrastColorOf(view.backgroundColor!, returnFlat: true)
+        sloganLabel.textColor = .white
         sloganLabel.font = UIFont.systemFont(ofSize: 28, weight: .light)
         sloganLabel.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(sloganLabel)

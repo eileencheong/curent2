@@ -17,9 +17,7 @@ class BrowserViewController: UIViewController, UICollectionViewDataSource, UICol
     //var userImageView: UIImageView!
     let userGivenName = GIDSignIn.sharedInstance().currentUser.profile.givenName
     //let userImageURL = GIDSignIn.sharedInstance().currentUser.profile.imageURL(withDimension: 14)
-    
-    var headerView: UIView!
-    
+
     var propertyCollectionView: UICollectionView!
     
     let propertyCollectionViewCellReuseIdentifier = "propertyCell"
@@ -35,21 +33,17 @@ class BrowserViewController: UIViewController, UICollectionViewDataSource, UICol
         
         navigationController?.isNavigationBarHidden = false
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Sign Out", style: .plain, target: self, action: #selector(signOut))
-        
-        //SECTION: headerBackground
-        
-        headerView = UIView(frame: CGRect(x: 0, y: (navigationController?.navigationBar.frame.height)!+20, width: UIScreen.main.bounds.width, height: view.bounds.height/4))
-        headerView.backgroundColor = GradientColor(.topToBottom, frame: UIScreen.main.bounds, colors: [HexColor("#19d7fb")!, HexColor("#1e63ee")!])
-        view.addSubview(headerView)
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(submitListingButtonPressed))
         
         
         //SECTION: Welcome Label
         welcomeLabel = UILabel()
-        welcomeLabel.text = "Welcome \(userGivenName ?? "")!"
-        welcomeLabel.textColor = ContrastColorOf(view.backgroundColor!, returnFlat: true)
-        welcomeLabel.font = UIFont.systemFont(ofSize: 24, weight: .bold)
+        welcomeLabel.text = "Welcome, \(userGivenName ?? "")!"
+        welcomeLabel.textColor = UIColor(red: 0/255, green: 122/255, blue: 255/255, alpha: 1.0)
+        welcomeLabel.font = UIFont.systemFont(ofSize: 24, weight: .light)
         welcomeLabel.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(welcomeLabel)
+        
         
         //SECTION: Setup propertyCollectionView
         let propertyLayout = UICollectionViewFlowLayout()
@@ -73,13 +67,7 @@ class BrowserViewController: UIViewController, UICollectionViewDataSource, UICol
     
     func setUpConstraints() {
         //TODO: STUB
-        
-        NSLayoutConstraint.activate([
-            headerView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            headerView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            headerView.topAnchor.constraint(equalTo: view.topAnchor)
-            ])
-        
+
         NSLayoutConstraint.activate([
             welcomeLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 18),
             welcomeLabel.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -18),
@@ -89,7 +77,7 @@ class BrowserViewController: UIViewController, UICollectionViewDataSource, UICol
         NSLayoutConstraint.activate([
             propertyCollectionView.leadingAnchor.constraint(equalTo: welcomeLabel.leadingAnchor),
             propertyCollectionView.trailingAnchor.constraint(equalTo: welcomeLabel.trailingAnchor),
-            propertyCollectionView.topAnchor.constraint(equalTo: headerView.bottomAnchor, constant: 12),
+            propertyCollectionView.topAnchor.constraint(equalTo: welcomeLabel.bottomAnchor, constant: 12),
             propertyCollectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
             ])
     }
@@ -99,7 +87,7 @@ class BrowserViewController: UIViewController, UICollectionViewDataSource, UICol
         cell2.propertyImageView.image = sampleProperties[indexPath.item].propertyImage
         cell2.propertyNameLabel.text = sampleProperties[indexPath.item].propertyName
         cell2.propertyLocationLabel.text = sampleProperties[indexPath.item].propertyLocation.rawValue
-        cell2.propertyPriceLabel.text = sampleProperties[indexPath.item].propertyPrice.rawValue
+        cell2.propertyPriceLabel.text = propertyPriceToSymbol(price: sampleProperties[indexPath.item].propertyPrice).rawValue
         cell2.setNeedsUpdateConstraints()
         return cell2
     }
@@ -110,7 +98,7 @@ class BrowserViewController: UIViewController, UICollectionViewDataSource, UICol
     
     func collectionView(_ CollectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if (CollectionView == propertyCollectionView) {
-            return 8
+            return 1
         }
         else {
             return 10
@@ -148,6 +136,10 @@ class BrowserViewController: UIViewController, UICollectionViewDataSource, UICol
             signOutAlert.dismiss(animated: true, completion: nil)
         }))
         present(signOutAlert, animated: true)
+    }
+    
+    @objc func submitListingButtonPressed() {
+        present(AddPropertyViewController(), animated: true, completion: nil)
     }
     
 

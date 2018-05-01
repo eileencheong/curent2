@@ -24,31 +24,39 @@ enum PropertyLocation: String {
     case other = "Other"
 }
 
-enum VerifiedUser: String {
-    case verified = "Verified"
-    case unverified = "Unverified"
-}
 
 class Property {
     var propertyName: String
     var propertyImage: UIImage
-    var propertyPrice: PropertyPrice
+    var propertyPrice: Double
     var propertyLocation: PropertyLocation
     var propertyAddress: String
+    var propertyDescription: String
     
-    var ownerFirstName: String
-    var userIsVerified: Bool
+    var ownerName: String
     
-    init(propertyName: String, propertyImage: UIImage, propertyPrice: PropertyPrice, propertyLocation: PropertyLocation, propertyAddress: String, ownerFirstName: String, userIsVerified: Bool) {
+    init(propertyName: String, propertyImage: UIImage, propertyPrice: Double, propertyLocation: PropertyLocation, propertyAddress: String, propertyDescription: String, ownerName: String) {
         self.propertyName = propertyName
         self.propertyImage = propertyImage
         self.propertyPrice = propertyPrice
         self.propertyLocation = propertyLocation
         self.propertyAddress = propertyAddress
-        self.ownerFirstName = ownerFirstName
-        self.userIsVerified = userIsVerified
+        self.propertyDescription = propertyDescription
+        self.ownerName = ownerName
     }
+    
+    
     
 }
 
+func propertyPriceToSymbol(price: Double) -> PropertyPrice {
+    if (price <= 300) {
+        return .inexpensive
+    } else if (price > 300 && price <= 600) {
+        return .midrange
+    } else {
+        return .expensive
+    }
+    
+}
 
