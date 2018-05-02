@@ -18,28 +18,19 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="iXt-EM-yom">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <viewLayoutGuide key="safeArea" id="EFv-Eh-tBg"/>
-                            </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="BkU-mL-cqt">
-                                <rect key="frame" x="89" y="282" width="197" height="103"/>
+                                <rect key="frame" x="89" y="290" width="197" height="86"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CURent" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GdZ-KB-tBX">
                                         <rect key="frame" x="0.0" y="0.0" width="197" height="66"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="55"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="textColor" red="0.0" green="0.22352941179999999" blue="0.45098039220000002" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="2z2-Rd-Fdv">
-                                        <rect key="frame" x="80" y="66" width="37" height="37"/>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="2z2-Rd-Fdv">
+                                        <rect key="frame" x="88.5" y="66" width="20" height="20"/>
                                     </activityIndicatorView>
                                 </subviews>
-                                <constraints>
-                                    <constraint firstItem="GdZ-KB-tBX" firstAttribute="centerX" secondItem="BkU-mL-cqt" secondAttribute="centerX" id="7Ve-mZ-iTJ"/>
-                                    <constraint firstItem="2z2-Rd-Fdv" firstAttribute="centerX" secondItem="BkU-mL-cqt" secondAttribute="centerX" id="DJJ-jB-U9K"/>
-                                </constraints>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -55,7 +46,4 @@
             <point key="canvasLocation" x="52" y="373.76311844077964"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="background" width="1242" height="2208"/>
-    </resources>
 </document>

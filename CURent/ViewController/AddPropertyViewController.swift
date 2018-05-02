@@ -12,7 +12,7 @@ import GooglePlaces
 import SnapKit
 import ChameleonFramework
 
-class AddPropertyViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, GMSAutocompleteViewControllerDelegate {
+class AddPropertyViewController: UIViewController, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, GMSAutocompleteViewControllerDelegate {
 
     var propertyNameField: UITextField!
     var propertyImageView: UIImageView!
@@ -82,11 +82,11 @@ class AddPropertyViewController: UIViewController, UIImagePickerControllerDelega
         view.addSubview(propertyAddressField)
         
         propertyDescriptionView = UITextView()
-        propertyDescriptionView.text = "Description"
+        propertyDescriptionView.delegate = self as? UITextViewDelegate
         propertyDescriptionView.font = UIFont.systemFont(ofSize: 13)
         propertyDescriptionView.layer.borderWidth = 1.0
         propertyDescriptionView.layer.borderColor = UIColor(red: 234/255, green: 234/255, blue: 234/255, alpha: 1.0).cgColor
-        propertyDescriptionView.textColor = UIColor(red: 214/255, green: 214/255, blue: 217/255, alpha: 1.0)
+        propertyDescriptionView.textColor = .black
         propertyDescriptionView.layer.cornerRadius = 5.0
         propertyDescriptionView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(propertyDescriptionView)
@@ -135,6 +135,13 @@ class AddPropertyViewController: UIViewController, UIImagePickerControllerDelega
             propertyDescriptionView.topAnchor.constraint(equalTo: propertyAddressField.bottomAnchor, constant: 18),
             propertyDescriptionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -32)
             ])
+    }
+    
+    private func textViewDidEndEditing(textView: UITextView) {
+        if textView.text.isEmpty {
+            textView.text = "Description"
+            textView.textColor = UIColor.lightGray
+        }
     }
     
     @objc func textFieldDidChange(_ textField: UITextField) {
