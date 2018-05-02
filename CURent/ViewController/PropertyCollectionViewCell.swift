@@ -19,7 +19,8 @@ class PropertyCollectionViewCell: UICollectionViewCell {
         
         propertyImageView = UIImageView()
         propertyImageView.layer.cornerRadius = 10
-        propertyImageView.layer.masksToBounds = true
+        propertyImageView.clipsToBounds = true
+        propertyImageView.contentMode = .scaleAspectFill
         propertyImageView.translatesAutoresizingMaskIntoConstraints = false
         contentView.addSubview(propertyImageView)
         
