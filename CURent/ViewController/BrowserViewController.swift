@@ -64,7 +64,7 @@ class BrowserViewController: UIViewController, UICollectionViewDataSource, UICol
         //SECTION: Welcome Label
         welcomeLabel = UILabel()
         welcomeLabel.text = "Welcome, \(userGivenName ?? "")!"
-        welcomeLabel.textColor = UIColor(red: 0/255, green: 122/255, blue: 255/255, alpha: 1.0)
+        welcomeLabel.textColor = HexColor("#003973")
         welcomeLabel.font = UIFont.systemFont(ofSize: 24, weight: .light)
         welcomeLabel.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(welcomeLabel)
