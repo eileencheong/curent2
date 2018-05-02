@@ -46,19 +46,19 @@ class AddPropertyViewController: UIViewController, UIImagePickerControllerDelega
         
         
         propertyNameField = UITextField()
-        propertyNameField.borderStyle = .line
+        propertyNameField.borderStyle = .roundedRect
         propertyNameField.placeholder = "Property name"
         propertyNameField.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(propertyNameField)
         
         propertyPriceField = UITextField()
-        propertyPriceField.borderStyle = .line
+        propertyPriceField.borderStyle = .roundedRect
         propertyPriceField.placeholder = "Price"
         propertyPriceField.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(propertyPriceField)
         
         propertyAddressField = UITextField()
-        propertyAddressField.borderStyle = .line
+        propertyAddressField.borderStyle = .roundedRect
         propertyAddressField.placeholder = "Address"
         propertyAddressField.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(propertyAddressField)
