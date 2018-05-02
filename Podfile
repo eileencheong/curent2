@@ -12,5 +12,6 @@ target 'CURent' do
   pod 'ChameleonFramework/Swift'
   pod 'GoogleMaps'
   pod 'GooglePlaces'
+  pod 'SnapKit'
 
 end
