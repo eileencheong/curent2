@@ -10,6 +10,7 @@ import UIKit
 import GoogleMaps
 import GooglePlaces
 import SnapKit
+import ChameleonFramework
 
 class AddPropertyViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, GMSAutocompleteViewControllerDelegate {
 
@@ -83,7 +84,10 @@ class AddPropertyViewController: UIViewController, UIImagePickerControllerDelega
         propertyDescriptionView = UITextView()
         propertyDescriptionView.text = "Description"
         propertyDescriptionView.font = UIFont.systemFont(ofSize: 13)
-        propertyDescriptionView.layer.cornerRadius = 10
+        propertyDescriptionView.layer.borderWidth = 1.0
+        propertyDescriptionView.layer.borderColor = UIColor(red: 234/255, green: 234/255, blue: 234/255, alpha: 1.0).cgColor
+        propertyDescriptionView.textColor = UIColor(red: 214/255, green: 214/255, blue: 217/255, alpha: 1.0)
+        propertyDescriptionView.layer.cornerRadius = 5.0
         propertyDescriptionView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(propertyDescriptionView)
 
@@ -128,7 +132,8 @@ class AddPropertyViewController: UIViewController, UIImagePickerControllerDelega
         NSLayoutConstraint.activate([
             propertyDescriptionView.leadingAnchor.constraint(equalTo: propertyNameField.leadingAnchor),
             propertyDescriptionView.trailingAnchor.constraint(equalTo: propertyNameField.trailingAnchor),
-            propertyDescriptionView.topAnchor.constraint(equalTo: propertyAddressField.bottomAnchor, constant: 18)
+            propertyDescriptionView.topAnchor.constraint(equalTo: propertyAddressField.bottomAnchor, constant: 18),
+            propertyDescriptionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -32)
             ])
     }
     
@@ -165,8 +170,9 @@ class AddPropertyViewController: UIViewController, UIImagePickerControllerDelega
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         let chosenImage = info[UIImagePickerControllerOriginalImage] as! UIImage
-        propertyImageView.contentMode = .scaleAspectFit
+        propertyImageView.contentMode = .scaleAspectFill
         propertyImageView.image = chosenImage
+        propertyImageChangeButton.setTitleColor(ContrastColorOf(AverageColorFromImage(chosenImage), returnFlat: true), for: .normal) //need to make the color refresh!
         dismiss(animated: true, completion: nil)
     }
     
