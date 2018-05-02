@@ -139,7 +139,9 @@ class BrowserViewController: UIViewController, UICollectionViewDataSource, UICol
     }
     
     @objc func submitListingButtonPressed() {
-        present(AddPropertyViewController(), animated: true, completion: nil)
+        let vc = AddPropertyViewController()
+        let nav = UINavigationController(rootViewController: vc)
+        present(nav, animated: true, completion: nil)
     }
     
 
