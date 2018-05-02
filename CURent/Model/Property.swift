@@ -66,6 +66,16 @@ class Property {
         self.ownerName = ownerName
     }
     
+    func priceSymbol() -> String {
+        if (propertyPrice) <= 300 {
+            return "$"
+        } else if (propertyPrice > 300 && propertyPrice <= 600) {
+            return "$$"
+        } else {
+            return "$$$"
+        }
+    }
+    
     
     
 }
@@ -80,4 +90,6 @@ func propertyPriceToSymbol(price: Double) -> PropertyPrice {
     }
     
 }
+
+
 

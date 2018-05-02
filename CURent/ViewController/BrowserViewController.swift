@@ -126,7 +126,7 @@ class BrowserViewController: UIViewController, UICollectionViewDataSource, UICol
             cell.propertyImageView.image = property.propertyImage
             cell.propertyNameLabel.text = property.propertyName
             cell.propertyLocationLabel.text = property.propertyLocation.filterTitle
-            cell.propertyPriceLabel.text = propertyPriceToSymbol(price: property.propertyPrice).filterTitle
+            cell.propertyPriceLabel.text = property.priceSymbol()
             cell.setNeedsUpdateConstraints()
             return cell
         }
@@ -146,7 +146,7 @@ class BrowserViewController: UIViewController, UICollectionViewDataSource, UICol
     //add filter
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if collectionView == filterCollectionView {
-            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: filterReuseIdentifier, for: indexPath) as? FilterCollectionViewCell else { return }
+            guard collectionView.dequeueReusableCell(withReuseIdentifier: filterReuseIdentifier, for: indexPath) is FilterCollectionViewCell else { return }
             let currentFilter = filters[indexPath.item]
             changeFilter(filter: currentFilter, shouldRemove: false)
             propertyCollectionView.reloadData()
@@ -156,7 +156,7 @@ class BrowserViewController: UIViewController, UICollectionViewDataSource, UICol
     //remove filter
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
         if collectionView == filterCollectionView {
-            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: filterReuseIdentifier, for: indexPath) as? FilterCollectionViewCell else { return }
+            guard collectionView.dequeueReusableCell(withReuseIdentifier: filterReuseIdentifier, for: indexPath) is FilterCollectionViewCell else { return }
             let currentFilter = filters[indexPath.item]
             changeFilter(filter: currentFilter, shouldRemove: true)
             propertyCollectionView.reloadData()
