@@ -10,18 +10,39 @@ import Foundation
 import UIKit
 import GoogleSignIn
 
-enum PropertyPrice: String {
-    case inexpensive = "$"
-    case midrange = "$$"
-    case expensive = "$$$"
+protocol Filter {
+    var filterTitle: String { get }
 }
 
-enum PropertyLocation: String {
-    case collegetown = "Collegetown"
-    case downtown = "Downtown"
-    case westCampus = "West"
-    case northCampus = "North"
-    case other = "Other"
+enum PropertyPrice: Filter {
+    case inexpensive
+    case midrange
+    case expensive
+    
+    var filterTitle: String {
+        return String(describing: self).localizedUppercase
+    }
+    
+    static func allValues() -> [PropertyPrice] {
+        return [.inexpensive, .midrange, .expensive]
+    }
+}
+
+enum PropertyLocation: Filter {
+    case collegetown
+    case downtown
+    case westCampus
+    case northCampus
+    case other
+    
+    var filterTitle: String {
+        return String(describing: self).localizedUppercase
+    }
+    
+    static func allValues() -> [PropertyLocation] {
+        return [.collegetown, .downtown, .westCampus, .northCampus, .other]
+    }
+    
 }
 
 

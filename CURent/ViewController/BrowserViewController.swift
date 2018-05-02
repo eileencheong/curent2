@@ -17,12 +17,21 @@ class BrowserViewController: UIViewController, UICollectionViewDataSource, UICol
     //var userImageView: UIImageView!
     let userGivenName = GIDSignIn.sharedInstance().currentUser.profile.givenName
     //let userImageURL = GIDSignIn.sharedInstance().currentUser.profile.imageURL(withDimension: 14)
+    
+    var filterCollectionViewHeight: CGFloat = 50
+    
+    var sampleProperties: [Property] = []
+    var activeRestaurants: [Property] = []
+    
+    var filters: [Filter] = []
+    var activeCostFilter: Set<PropertyPrice> = []
+    var activePlaceFilter: Set<PropertyLocation> = []
 
     var propertyCollectionView: UICollectionView!
+    var filterCollectionView: UICollectionView!
     
     let propertyCollectionViewCellReuseIdentifier = "propertyCell"
-    
-    let sampleProperties = createInitialPropertyArray()
+    let filterReuseIdentifier: String = "FilterCollectionViewCell"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,6 +39,13 @@ class BrowserViewController: UIViewController, UICollectionViewDataSource, UICol
         //navigationController?.navigationBar.prefersLargeTitles = true
         view.backgroundColor = .white
         title = "Browse"
+        
+        sampleProperties = createInitialPropertyArray()
+        activeRestaurants = sampleProperties
+        filters.append(contentsOf: PropertyPrice.allValues().map({ f in f as Filter}))
+        filters.append(contentsOf: PropertyLocation.allValues().map({ f in f as Filter}))
+        
+        filterCollectionView = UICollectionView(frame: .zero, collectionViewLayout: FilterCollectionViewFlowLayout())
         
         navigationController?.isNavigationBarHidden = false
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Sign Out", style: .plain, target: self, action: #selector(signOut))
@@ -86,15 +102,12 @@ class BrowserViewController: UIViewController, UICollectionViewDataSource, UICol
         let cell2 = propertyCollectionView.dequeueReusableCell(withReuseIdentifier: propertyCollectionViewCellReuseIdentifier, for: indexPath) as! PropertyCollectionViewCell
         cell2.propertyImageView.image = sampleProperties[indexPath.item].propertyImage
         cell2.propertyNameLabel.text = sampleProperties[indexPath.item].propertyName
-        cell2.propertyLocationLabel.text = sampleProperties[indexPath.item].propertyLocation.rawValue
-        cell2.propertyPriceLabel.text = propertyPriceToSymbol(price: sampleProperties[indexPath.item].propertyPrice).rawValue
+        cell2.propertyLocationLabel.text = sampleProperties[indexPath.item].propertyLocation.filterTitle
+        cell2.propertyPriceLabel.text = propertyPriceToSymbol(price: sampleProperties[indexPath.item].propertyPrice).filterTitle
         cell2.setNeedsUpdateConstraints()
         return cell2
     }
     
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        //TODO: STUB
-    }
     
     func collectionView(_ CollectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if (CollectionView == propertyCollectionView) {
