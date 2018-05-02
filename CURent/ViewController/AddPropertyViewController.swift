@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import GoogleMaps
 import GooglePlaces
 
 class AddPropertyViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, GMSAutocompleteViewControllerDelegate {
@@ -22,9 +23,6 @@ class AddPropertyViewController: UIViewController, UIImagePickerControllerDelega
     var propertyAddressField: UITextField!
     var propertyDescriptionView: UITextView!
     
-    let autocompleteViewController = GMSAutocompleteViewController()
-    autocompleteViewController.delegate = self
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,6 +34,10 @@ class AddPropertyViewController: UIViewController, UIImagePickerControllerDelega
         navigationController?.isNavigationBarHidden = false
         navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(closeView))
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(saveProperty))
+        
+        
+        let autocompleteViewController = GMSAutocompleteViewController()
+        autocompleteViewController.delegate = self
 
         propertyImageView = UIImageView()
         propertyImageView.translatesAutoresizingMaskIntoConstraints = false
