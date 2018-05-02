@@ -11,49 +11,49 @@ import GoogleMaps
 import GooglePlaces
 
 class PropertyDetailViewController: UIViewController, GMSAutocompleteViewControllerDelegate {
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         //setup autocompleteViewController
         let autocompleteViewController = GMSAutocompleteViewController()
         autocompleteViewController.delegate = self
-        
-        
-        
-        
+
+
+
+
         setUpConstraints()
-        
+
         // Do any additional setup after loading the view.
     }
-    
+
     func setUpConstraints() {
-        
+
     }
-    
+
     func openAutocompleteViewController() {
         self.present(autocompleteViewController, animated: true,  completion: nil)
     }
-    
+
     func viewController(_ viewController: GMSAutocompleteViewController, didAutocompleteWith place: GMSPlace) {
-        
+
         dismiss(animated: true, completion: nil)
     }
-    
+
     func viewController(_ viewController: GMSAutocompleteViewController, didFailAutocompleteWithError error: Error) {
         <#code#>
     }
-    
+
     func wasCancelled(_ viewController: GMSAutocompleteViewController) {
         dismiss(animated: true, completion: nil)
     }
-    
+
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
+
 
     /*
     // MARK: - Navigation

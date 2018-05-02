@@ -21,7 +21,7 @@ class BrowserViewController: UIViewController, UICollectionViewDataSource, UICol
     var filterCollectionViewHeight: CGFloat = 50
     
     var sampleProperties: [Property] = []
-    var activeRestaurants: [Property] = []
+    var activeProperties: [Property] = []
     
     var filters: [Filter] = []
     var activeCostFilter: Set<PropertyPrice> = []
@@ -41,11 +41,20 @@ class BrowserViewController: UIViewController, UICollectionViewDataSource, UICol
         title = "Browse"
         
         sampleProperties = createInitialPropertyArray()
-        activeRestaurants = sampleProperties
+        activeProperties = sampleProperties
         filters.append(contentsOf: PropertyPrice.allValues().map({ f in f as Filter}))
         filters.append(contentsOf: PropertyLocation.allValues().map({ f in f as Filter}))
         
         filterCollectionView = UICollectionView(frame: .zero, collectionViewLayout: FilterCollectionViewFlowLayout())
+        
+        filterCollectionView.translatesAutoresizingMaskIntoConstraints = false
+        filterCollectionView.delegate = self
+        filterCollectionView.dataSource = self
+        filterCollectionView.register(FilterCollectionViewCell.self, forCellWithReuseIdentifier: filterReuseIdentifier)
+        filterCollectionView.showsHorizontalScrollIndicator = false
+        filterCollectionView.backgroundColor = .clear
+        filterCollectionView.allowsMultipleSelection = true
+        view.addSubview(filterCollectionView)
         
         navigationController?.isNavigationBarHidden = false
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Sign Out", style: .plain, target: self, action: #selector(signOut))
@@ -93,29 +102,64 @@ class BrowserViewController: UIViewController, UICollectionViewDataSource, UICol
         NSLayoutConstraint.activate([
             propertyCollectionView.leadingAnchor.constraint(equalTo: welcomeLabel.leadingAnchor),
             propertyCollectionView.trailingAnchor.constraint(equalTo: welcomeLabel.trailingAnchor),
-            propertyCollectionView.topAnchor.constraint(equalTo: welcomeLabel.bottomAnchor, constant: 12),
+            propertyCollectionView.topAnchor.constraint(equalTo: filterCollectionView.bottomAnchor, constant: 12),
             propertyCollectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
+            ])
+        
+        NSLayoutConstraint.activate([
+            filterCollectionView.leadingAnchor.constraint(equalTo: welcomeLabel.leadingAnchor),
+            filterCollectionView.trailingAnchor.constraint(equalTo: welcomeLabel.trailingAnchor),
+            filterCollectionView.topAnchor.constraint(equalTo: welcomeLabel.bottomAnchor, constant: 12),
+            filterCollectionView.heightAnchor.constraint(equalToConstant: filterCollectionViewHeight)
             ])
     }
     
-    func collectionView(_ CollectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell2 = propertyCollectionView.dequeueReusableCell(withReuseIdentifier: propertyCollectionViewCellReuseIdentifier, for: indexPath) as! PropertyCollectionViewCell
-        cell2.propertyImageView.image = sampleProperties[indexPath.item].propertyImage
-        cell2.propertyNameLabel.text = sampleProperties[indexPath.item].propertyName
-        cell2.propertyLocationLabel.text = sampleProperties[indexPath.item].propertyLocation.filterTitle
-        cell2.propertyPriceLabel.text = propertyPriceToSymbol(price: sampleProperties[indexPath.item].propertyPrice).filterTitle
-        cell2.setNeedsUpdateConstraints()
-        return cell2
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        if collectionView == filterCollectionView {
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: filterReuseIdentifier, for: indexPath) as? FilterCollectionViewCell else { return UICollectionViewCell() }
+            let filter = filters[indexPath.item]
+            cell.setup(with: filter.filterTitle)
+            return cell
+        } else {
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: propertyCollectionViewCellReuseIdentifier, for: indexPath) as? PropertyCollectionViewCell else { return UICollectionViewCell() }
+            let property = activeProperties[indexPath.item]
+            cell.propertyImageView.image = property.propertyImage
+            cell.propertyNameLabel.text = property.propertyName
+            cell.propertyLocationLabel.text = property.propertyLocation.filterTitle
+            cell.propertyPriceLabel.text = propertyPriceToSymbol(price: property.propertyPrice).filterTitle
+            cell.setNeedsUpdateConstraints()
+            return cell
+        }
     }
     
     
     func collectionView(_ CollectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if (CollectionView == propertyCollectionView) {
-            return 1
+            return activeProperties.count
         }
         else {
-            return 10
+            return filters.count
             //TODO: STUB
+        }
+    }
+    
+    //add filter
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if collectionView == filterCollectionView {
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: filterReuseIdentifier, for: indexPath) as? FilterCollectionViewCell else { return }
+            let currentFilter = filters[indexPath.item]
+            changeFilter(filter: currentFilter, shouldRemove: false)
+            propertyCollectionView.reloadData()
+        }
+    }
+    
+    //remove filter
+    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+        if collectionView == filterCollectionView {
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: filterReuseIdentifier, for: indexPath) as? FilterCollectionViewCell else { return }
+            let currentFilter = filters[indexPath.item]
+            changeFilter(filter: currentFilter, shouldRemove: true)
+            propertyCollectionView.reloadData()
         }
     }
     
@@ -157,6 +201,48 @@ class BrowserViewController: UIViewController, UICollectionViewDataSource, UICol
         present(nav, animated: true, completion: nil)
     }
     
+    func changeFilter(filter: Filter, shouldRemove: Bool = false) {
+        if let propertyPrice = filter as? PropertyPrice {
+            if shouldRemove {
+                activeCostFilter.remove(propertyPrice)
+            } else {
+                activeCostFilter.insert(propertyPrice)
+            }
+        }
+        if let propertyLocation = filter as? PropertyLocation {
+            if shouldRemove {
+                activePlaceFilter.remove(propertyLocation)
+            } else {
+                activePlaceFilter.insert(propertyLocation)
+            }
+        }
+        
+        filterRestaurants() //now filter the restaurants according to our activeFilters
+    }
+    
+    func filterRestaurants() {
+        if activePlaceFilter.count == 0 && activeCostFilter.count == 0 {
+            activeProperties = sampleProperties
+            return
+        }
+        activeProperties = sampleProperties.filter({ r in
+            var placeFilteredOut = activePlaceFilter.count > 0
+            if activePlaceFilter.count > 0 {
+                if activePlaceFilter.contains(r.propertyLocation) {
+                    placeFilteredOut = false
+                }
+            }
+            
+            var costFilteredOut = activeCostFilter.count > 0
+            if activeCostFilter.count > 0 {
+                if activeCostFilter.contains(propertyPriceToSymbol(price: r.propertyPrice)) {
+                    costFilteredOut = false
+                }
+            }
+            
+            return !(placeFilteredOut || costFilteredOut)
+        })
+    }
 
     /*
     // MARK: - Navigation
