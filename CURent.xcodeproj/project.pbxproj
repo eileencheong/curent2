@@ -19,6 +19,7 @@
 		207F7AC620946CA300DE50F9 /* SampleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207F7AC520946CA300DE50F9 /* SampleData.swift */; };
 		207F7AC82094737500DE50F9 /* PropertyDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207F7AC72094737500DE50F9 /* PropertyDetailViewController.swift */; };
 		209F6013209931CC0025E2C9 /* Geocode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 209F6012209931CC0025E2C9 /* Geocode.swift */; };
+		3B1FA1F02099525D00D1F0CF /* FilterCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1FA1EF2099525D00D1F0CF /* FilterCollectionViewCell.swift */; };
 		5B4F7A8AFDAF4A3BCDD1465E /* Pods_CURent.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 810224C4754021B01FA61915 /* Pods_CURent.framework */; };
 /* End PBXBuildFile section */
 
@@ -37,6 +38,7 @@
 		207F7AC520946CA300DE50F9 /* SampleData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleData.swift; sourceTree = "<group>"; };
 		207F7AC72094737500DE50F9 /* PropertyDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyDetailViewController.swift; sourceTree = "<group>"; };
 		209F6012209931CC0025E2C9 /* Geocode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Geocode.swift; sourceTree = "<group>"; };
+		3B1FA1EF2099525D00D1F0CF /* FilterCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterCollectionViewCell.swift; sourceTree = "<group>"; };
 		810224C4754021B01FA61915 /* Pods_CURent.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CURent.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		995C42D1ACC622DF0BD95724 /* Pods-CURent.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CURent.release.xcconfig"; path = "Pods/Target Support Files/Pods-CURent/Pods-CURent.release.xcconfig"; sourceTree = "<group>"; };
 		A931C626B481AC49F38AE364 /* Pods-CURent.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CURent.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CURent/Pods-CURent.debug.xcconfig"; sourceTree = "<group>"; };
@@ -102,6 +104,7 @@
 				203CCF292091236600616EF2 /* SignInViewController.swift */,
 				203CCF3E2091A0F900616EF2 /* BrowserViewController.swift */,
 				205D92802095A0FF00C656E3 /* AddPropertyViewController.swift */,
+				3B1FA1EF2099525D00D1F0CF /* FilterCollectionViewCell.swift */,
 				207F7AC72094737500DE50F9 /* PropertyDetailViewController.swift */,
 				207F7ABA2094592400DE50F9 /* PropertyCollectionViewCell.swift */,
 			);
@@ -273,6 +276,7 @@
 				207F7AC22094689600DE50F9 /* Property.swift in Sources */,
 				207F7AC620946CA300DE50F9 /* SampleData.swift in Sources */,
 				203CCF302091236600616EF2 /* CURent.xcdatamodeld in Sources */,
+				3B1FA1F02099525D00D1F0CF /* FilterCollectionViewCell.swift in Sources */,
 				207F7ABB2094592400DE50F9 /* PropertyCollectionViewCell.swift in Sources */,
 				203CCF3F2091A0F900616EF2 /* BrowserViewController.swift in Sources */,
 				207F7AC82094737500DE50F9 /* PropertyDetailViewController.swift in Sources */,
