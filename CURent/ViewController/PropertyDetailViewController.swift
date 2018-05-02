@@ -8,17 +8,12 @@
 
 import UIKit
 import GoogleMaps
-import GooglePlaces
 import SnapKit
 
-class PropertyDetailViewController: UIViewController, GMSAutocompleteViewControllerDelegate {
+class PropertyDetailViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        //setup autocompleteViewController
-        let autocompleteViewController = GMSAutocompleteViewController()
-        autocompleteViewController.delegate = self
 
 
 
@@ -30,23 +25,6 @@ class PropertyDetailViewController: UIViewController, GMSAutocompleteViewControl
 
     func setUpConstraints() {
 
-    }
-
-    func openAutocompleteViewController() {
-        self.present(autocompleteViewController, animated: true,  completion: nil)
-    }
-
-    func viewController(_ viewController: GMSAutocompleteViewController, didAutocompleteWith place: GMSPlace) {
-
-        dismiss(animated: true, completion: nil)
-    }
-
-    func viewController(_ viewController: GMSAutocompleteViewController, didFailAutocompleteWithError error: Error) {
-        <#code#>
-    }
-
-    func wasCancelled(_ viewController: GMSAutocompleteViewController) {
-        dismiss(animated: true, completion: nil)
     }
 
 

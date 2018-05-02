@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import GooglePlaces
 
-class AddPropertyViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class AddPropertyViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, GMSAutocompleteViewControllerDelegate {
 
     var propertyNameField: UITextField!
     var propertyImageView: UIImageView!
@@ -20,6 +21,9 @@ class AddPropertyViewController: UIViewController, UIImagePickerControllerDelega
     var propertyPriceField: UITextField!
     var propertyAddressField: UITextField!
     var propertyDescriptionView: UITextView!
+    
+    let autocompleteViewController = GMSAutocompleteViewController()
+    autocompleteViewController.delegate = self
     
     
     override func viewDidLoad() {
@@ -112,6 +116,23 @@ class AddPropertyViewController: UIViewController, UIImagePickerControllerDelega
             propertyDescriptionView.trailingAnchor.constraint(equalTo: propertyNameField.trailingAnchor),
             propertyAddressField.topAnchor.constraint(equalTo: propertyAddressField.bottomAnchor, constant: 18)
             ])
+    }
+    
+    func openAutocompleteViewController() {
+        self.present(autocompleteViewController, animated: true,  completion: nil)
+    }
+    
+    func viewController(_ viewController: GMSAutocompleteViewController, didAutocompleteWith place: GMSPlace) {
+        
+        dismiss(animated: true, completion: nil)
+    }
+    
+    func viewController(_ viewController: GMSAutocompleteViewController, didFailAutocompleteWithError error: Error) {
+        <#code#>
+    }
+    
+    func wasCancelled(_ viewController: GMSAutocompleteViewController) {
+        dismiss(animated: true, completion: nil)
     }
 
     override func didReceiveMemoryWarning() {
