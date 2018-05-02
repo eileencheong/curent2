@@ -42,37 +42,39 @@ class AddPropertyViewController: UIViewController, UIImagePickerControllerDelega
         autocompleteViewController.delegate = self
 
         propertyImageView = UIImageView()
-        propertyImageView.layer.masksToBounds = true
+        propertyImageView.clipsToBounds = true
         propertyImageView.layer.cornerRadius = 10
         propertyImageView.translatesAutoresizingMaskIntoConstraints = false
+        propertyImageView.image = #imageLiteral(resourceName: "placeholder_img")
+        propertyImageView.contentMode = .scaleAspectFill
         view.addSubview(propertyImageView)
         
         propertyImageChangeButton = UIButton()
         propertyImageChangeButton.setTitle("Change image", for: .normal)
         propertyImageChangeButton.setTitleColor(.gray, for: .normal)
         propertyImageChangeButton.addTarget(self, action: #selector(photoFromLibrary(_sender:)), for: .touchUpInside)
-        propertyImageChangeButton.titleLabel?.font = UIFont.systemFont(ofSize: 12)
+        propertyImageChangeButton.titleLabel?.font = UIFont.systemFont(ofSize: 13)
         propertyImageChangeButton.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(propertyImageChangeButton)
         
         
         propertyNameField = UITextField()
         propertyNameField.borderStyle = .roundedRect
-        propertyNameField.font = UIFont.systemFont(ofSize: 12)
+        propertyNameField.font = UIFont.systemFont(ofSize: 13)
         propertyNameField.placeholder = "Property name"
         propertyNameField.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(propertyNameField)
         
         propertyPriceField = UITextField()
         propertyPriceField.borderStyle = .roundedRect
-        propertyPriceField.font = UIFont.systemFont(ofSize: 12)
+        propertyPriceField.font = UIFont.systemFont(ofSize: 13)
         propertyPriceField.placeholder = "Price"
         propertyPriceField.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(propertyPriceField)
         
         propertyAddressField = UITextField()
         propertyAddressField.borderStyle = .roundedRect
-        propertyAddressField.font = UIFont.systemFont(ofSize: 12)
+        propertyAddressField.font = UIFont.systemFont(ofSize: 13)
         propertyAddressField.placeholder = "Address"
         propertyAddressField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingDidBegin)
         propertyAddressField.translatesAutoresizingMaskIntoConstraints = false
@@ -80,7 +82,7 @@ class AddPropertyViewController: UIViewController, UIImagePickerControllerDelega
         
         propertyDescriptionView = UITextView()
         propertyDescriptionView.text = "Description"
-        propertyDescriptionView.font = UIFont.systemFont(ofSize: 12)
+        propertyDescriptionView.font = UIFont.systemFont(ofSize: 13)
         propertyDescriptionView.layer.cornerRadius = 10
         propertyDescriptionView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(propertyDescriptionView)
@@ -95,7 +97,7 @@ class AddPropertyViewController: UIViewController, UIImagePickerControllerDelega
             propertyImageView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 18),
             propertyImageView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -18),
             propertyImageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 24),
-            propertyImageView.bottomAnchor.constraint(equalTo: propertyImageView.topAnchor, constant: 80)
+            propertyImageView.bottomAnchor.constraint(equalTo: propertyImageView.topAnchor, constant: 200)
             ])
         
         NSLayoutConstraint.activate([
