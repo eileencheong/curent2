@@ -217,10 +217,10 @@ class BrowserViewController: UIViewController, UICollectionViewDataSource, UICol
             }
         }
         
-        filterRestaurants() //now filter the restaurants according to our activeFilters
+        filterProperties() //now filter the Properties according to our activeFilters
     }
     
-    func filterRestaurants() {
+    func filterProperties() {
         if activePlaceFilter.count == 0 && activeCostFilter.count == 0 {
             activeProperties = sampleProperties
             return
