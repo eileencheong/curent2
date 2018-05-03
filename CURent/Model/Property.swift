@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 import GoogleSignIn
+import GoogleMaps
 
 protocol Filter {
     var filterTitle: String { get }
@@ -53,10 +54,12 @@ class Property {
     var propertyLocation: PropertyLocation
     var propertyAddress: String
     var propertyDescription: String
+    var propertyLatitude: Double
+    var propertyLongitude: Double
     
     var ownerName: String
     
-    init(propertyName: String, propertyImage: UIImage, propertyPrice: Double, propertyLocation: PropertyLocation, propertyAddress: String, propertyDescription: String, ownerName: String) {
+    init(propertyName: String, propertyImage: UIImage, propertyPrice: Double, propertyLocation: PropertyLocation, propertyAddress: String, propertyDescription: String, ownerName: String, propertyLatitude: Double, propertyLongitude: Double) {
         self.propertyName = propertyName
         self.propertyImage = propertyImage
         self.propertyPrice = propertyPrice
@@ -64,6 +67,8 @@ class Property {
         self.propertyAddress = propertyAddress
         self.propertyDescription = propertyDescription
         self.ownerName = ownerName
+        self.propertyLatitude = propertyLatitude
+        self.propertyLongitude = propertyLongitude
     }
     
     func priceSymbol() -> String {

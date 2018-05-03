@@ -11,6 +11,7 @@ import GoogleMaps
 import GooglePlaces
 import SnapKit
 import ChameleonFramework
+import GoogleSignIn
 
 class AddPropertyViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, GMSAutocompleteViewControllerDelegate {
 
@@ -24,6 +25,8 @@ class AddPropertyViewController: UIViewController, UIImagePickerControllerDelega
     var propertyPriceField: UITextField!
     var propertyAddressField: UITextField!
     var propertyDescriptionView: UITextView!
+    
+    var propertyCoordinates: CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: 100.00, longitude: 100.00)
     
     let autocompleteViewController = GMSAutocompleteViewController()
     
@@ -82,11 +85,10 @@ class AddPropertyViewController: UIViewController, UIImagePickerControllerDelega
         view.addSubview(propertyAddressField)
         
         propertyDescriptionView = UITextView()
-        propertyDescriptionView.text = "Description"
         propertyDescriptionView.font = UIFont.systemFont(ofSize: 13)
         propertyDescriptionView.layer.borderWidth = 1.0
         propertyDescriptionView.layer.borderColor = UIColor(red: 234/255, green: 234/255, blue: 234/255, alpha: 1.0).cgColor
-        propertyDescriptionView.textColor = UIColor(red: 214/255, green: 214/255, blue: 217/255, alpha: 1.0)
+        propertyDescriptionView.textColor = .black
         propertyDescriptionView.layer.cornerRadius = 5.0
         propertyDescriptionView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(propertyDescriptionView)
@@ -137,12 +139,20 @@ class AddPropertyViewController: UIViewController, UIImagePickerControllerDelega
             ])
     }
     
+    private func textViewDidEndEditing(textView: UITextView) {
+        if textView.text.isEmpty {
+            textView.text = "Description"
+            textView.textColor = UIColor.lightGray
+        }
+    }
+    
     @objc func textFieldDidChange(_ textField: UITextField) {
         present(autocompleteViewController, animated: true,  completion: nil)
     }
     
     func viewController(_ viewController: GMSAutocompleteViewController, didAutocompleteWith place: GMSPlace) {
         propertyAddressField.text = place.formattedAddress
+        propertyCoordinates = place.coordinate
         dismiss(animated: true, completion: nil)
     }
     
@@ -185,6 +195,20 @@ class AddPropertyViewController: UIViewController, UIImagePickerControllerDelega
     }
     
     @objc func saveProperty() {
+        //ACTION when Save button is pressed
+        //creates a new Property object and prepares for export
+        var newProperty: Property
+        newProperty = Property(propertyName: propertyNameField.text!, propertyImage: propertyImageView.image!, propertyPrice: Double(propertyPriceField.text!)!, propertyLocation: .collegetown, propertyAddress: propertyAddressField.text!, propertyDescription: propertyDescriptionView.text, ownerName: GIDSignIn.sharedInstance().currentUser.profile.name, propertyLatitude:propertyCoordinates.latitude, propertyLongitude: propertyCoordinates.longitude)
+        
+        var newPropertyJSON: [String : String] = [
+            "propertyName":newProperty.propertyName,
+            "propertyPrice":String(newProperty.propertyPrice),
+            "propertyLocation":newProperty.propertyLocation.filterTitle,
+            "propertyAddress":newProperty.propertyAddress,
+            "ownerName":newProperty.ownerName,
+            "propertyLatitude":String(propertyCoordinates.latitude),
+            "propertyLongitude":String(propertyCoordinates.longitude)
+        ]
         
     }
     

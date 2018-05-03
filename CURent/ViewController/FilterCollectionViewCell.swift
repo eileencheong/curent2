@@ -12,7 +12,8 @@ import ChameleonFramework
 class FilterCollectionViewCell: UICollectionViewCell {
     
     var filterLabel: UILabel!
-    var unselectedColor: UIColor = UIColor(red: 188/255, green: 188/255, blue: 188/255, alpha: 1.0)
+    //var unselectedColor: UIColor = UIColor(red: 188/255, green: 188/255, blue: 188/255, alpha: 1.0)
+    var unselectedColor: UIColor = UIColor(red: 0.88, green: 0.88, blue: 0.88, alpha: 1.0)
     var selectedColor: UIColor = HexColor("#003973")!
     
     override init(frame: CGRect) {
@@ -21,8 +22,9 @@ class FilterCollectionViewCell: UICollectionViewCell {
         filterLabel.textAlignment = .center
         filterLabel.font = .systemFont(ofSize: 14)
         filterLabel.textColor = .white
-        layer.cornerRadius = 5
-        backgroundColor = UIColor(red: 188/255, green: 188/255, blue: 188/255, alpha: 1.0)
+        layer.cornerRadius = 10
+        //backgroundColor = UIColor(red: 188/255, green: 188/255, blue: 188/255, alpha: 1.0)
+        backgroundColor = UIColor.lightGray
         contentView.addSubview(filterLabel)
         isSelected = false
     }
