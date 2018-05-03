@@ -194,21 +194,37 @@ class AddPropertyViewController: UIViewController, UIImagePickerControllerDelega
         dismiss(animated: true, completion: nil)
     }
     
+    func promptIfInputEmpty() -> Bool {
+        if (propertyNameField.text == "" || propertyPriceField.text == "" || propertyAddressField.text == "" || propertyDescriptionView.text == "") {
+            let fieldEmptyAlert = UIAlertController(title: "Some fields are empty.", message: "Fields may not be left empty. Please go back and fill in empty fields.", preferredStyle: .alert)
+            fieldEmptyAlert.addAction(UIAlertAction(title: "Go back", style: .cancel, handler: { action in
+                fieldEmptyAlert.dismiss(animated: true, completion: nil)
+            }))
+            present(fieldEmptyAlert, animated: true)
+            return false
+        } else {
+            return true
+        }
+    }
+    
     @objc func saveProperty() {
         //ACTION when Save button is pressed
         //creates a new Property object and prepares for export
-        var newProperty: Property
-        newProperty = Property(propertyName: propertyNameField.text!, propertyImage: propertyImageView.image!, propertyPrice: Double(propertyPriceField.text!)!, propertyLocation: .collegetown, propertyAddress: propertyAddressField.text!, propertyDescription: propertyDescriptionView.text, ownerName: GIDSignIn.sharedInstance().currentUser.profile.name, propertyLatitude:propertyCoordinates.latitude, propertyLongitude: propertyCoordinates.longitude)
-        
-        var newPropertyJSON: [String : String] = [
-            "propertyName":newProperty.propertyName,
-            "propertyPrice":String(newProperty.propertyPrice),
-            "propertyLocation":newProperty.propertyLocation.filterTitle,
-            "propertyAddress":newProperty.propertyAddress,
-            "ownerName":newProperty.ownerName,
-            "propertyLatitude":String(propertyCoordinates.latitude),
-            "propertyLongitude":String(propertyCoordinates.longitude)
-        ]
+        let check = promptIfInputEmpty()
+        if (check) {
+            var newProperty: Property
+            newProperty = Property(propertyName: propertyNameField.text!, propertyImage: propertyImageView.image!, propertyPrice: Double(propertyPriceField.text!)!, propertyLocation: .collegetown, propertyAddress: propertyAddressField.text!, propertyDescription: propertyDescriptionView.text, ownerName: GIDSignIn.sharedInstance().currentUser.profile.name, propertyLatitude:propertyCoordinates.latitude, propertyLongitude: propertyCoordinates.longitude)
+            
+            var newPropertyJSON: [String : String] = [
+                "propertyName":newProperty.propertyName,
+                "propertyPrice":String(newProperty.propertyPrice),
+                "propertyLocation":newProperty.propertyLocation.filterTitle,
+                "propertyAddress":newProperty.propertyAddress,
+                "ownerName":newProperty.ownerName,
+                "propertyLatitude":String(propertyCoordinates.latitude),
+                "propertyLongitude":String(propertyCoordinates.longitude)
+            ]
+        }
         
     }
     

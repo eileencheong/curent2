@@ -68,7 +68,7 @@ class BrowserViewController: UIViewController, UICollectionViewDataSource, UICol
         welcomeLabel = UILabel()
         welcomeLabel.text = "Hi, \(userGivenName ?? "")!"
         welcomeLabel.textColor = HexColor("#003973")
-        welcomeLabel.font = UIFont.systemFont(ofSize: 24, weight: .light)
+        welcomeLabel.font = UIFont.systemFont(ofSize: 28, weight: .bold)
         welcomeLabel.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(welcomeLabel)
         
@@ -115,7 +115,7 @@ class BrowserViewController: UIViewController, UICollectionViewDataSource, UICol
         NSLayoutConstraint.activate([
             welcomeLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 24),
             welcomeLabel.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -24),
-            welcomeLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 24)
+            welcomeLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 28)
             ])
         
         NSLayoutConstraint.activate([
