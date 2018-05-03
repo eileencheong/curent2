@@ -30,6 +30,7 @@ class BrowserViewController: UIViewController, UICollectionViewDataSource, UICol
     var propertyCollectionView: UICollectionView!
     var filterCollectionView: UICollectionView!
     
+    var filterLabel: UILabel!
     var propertyBrowserLabel: UILabel!
     
     let propertyCollectionViewCellReuseIdentifier = "propertyCell"
@@ -65,7 +66,7 @@ class BrowserViewController: UIViewController, UICollectionViewDataSource, UICol
         
         //SECTION: Welcome Label
         welcomeLabel = UILabel()
-        welcomeLabel.text = "Welcome, \(userGivenName ?? "")!"
+        welcomeLabel.text = "Hi, \(userGivenName ?? "")!"
         welcomeLabel.textColor = HexColor("#003973")
         welcomeLabel.font = UIFont.systemFont(ofSize: 24, weight: .light)
         welcomeLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -87,9 +88,17 @@ class BrowserViewController: UIViewController, UICollectionViewDataSource, UICol
         
         view.addSubview(propertyCollectionView)
         
+        //SECTION: Filter Label
+        filterLabel = UILabel()
+        filterLabel.text = "I'M LOOKING FOR..."
+        filterLabel.textColor = UIColor.lightGray
+        filterLabel.font = UIFont.systemFont(ofSize: 12, weight: .bold)
+        filterLabel.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(filterLabel)
+        
         //SECTION: Property Browser Label
         propertyBrowserLabel = UILabel()
-        propertyBrowserLabel.text = "LISTED PROPERTIES"
+        propertyBrowserLabel.text = "MATCHING PROPERTIES"
         propertyBrowserLabel.textColor = UIColor.lightGray
         propertyBrowserLabel.font = UIFont.systemFont(ofSize: 12, weight: .bold)
         propertyBrowserLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -119,7 +128,7 @@ class BrowserViewController: UIViewController, UICollectionViewDataSource, UICol
         NSLayoutConstraint.activate([
             filterCollectionView.leadingAnchor.constraint(equalTo: welcomeLabel.leadingAnchor),
             filterCollectionView.trailingAnchor.constraint(equalTo: welcomeLabel.trailingAnchor),
-            filterCollectionView.topAnchor.constraint(equalTo: welcomeLabel.bottomAnchor, constant: 18),
+            filterCollectionView.topAnchor.constraint(equalTo: filterLabel.bottomAnchor, constant: 18),
             filterCollectionView.heightAnchor.constraint(equalToConstant: filterCollectionViewHeight)
             ])
         
@@ -127,6 +136,12 @@ class BrowserViewController: UIViewController, UICollectionViewDataSource, UICol
             propertyBrowserLabel.leadingAnchor.constraint(equalTo: welcomeLabel.leadingAnchor),
             propertyBrowserLabel.trailingAnchor.constraint(equalTo: welcomeLabel.trailingAnchor),
             propertyBrowserLabel.topAnchor.constraint(equalTo: filterCollectionView.bottomAnchor, constant: 28)
+            ])
+        
+        NSLayoutConstraint.activate([
+            filterLabel.leadingAnchor.constraint(equalTo: welcomeLabel.leadingAnchor),
+            filterLabel.trailingAnchor.constraint(equalTo: welcomeLabel.trailingAnchor),
+            filterLabel.topAnchor.constraint(equalTo: welcomeLabel.bottomAnchor, constant: 32)
             ])
     }
     
