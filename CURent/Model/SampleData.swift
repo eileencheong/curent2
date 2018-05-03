@@ -11,7 +11,12 @@ import Foundation
 func createInitialPropertyArray() -> [Property] {
     var returnArray: [Property] = []
     returnArray.append(property0)
-//    returnArray.append(property1)
+    returnArray.append(property0)
+    returnArray.append(property0)
+    returnArray.append(property0)
+    returnArray.append(property0)
+    returnArray.append(property0)
+//    returnArray.append(property0)
 //    returnArray.append(property2)
 //    returnArray.append(property3)
 //    returnArray.append(property4)
