@@ -285,6 +285,22 @@ class BrowserViewController: UIViewController, UICollectionViewDataSource, UICol
         print(sampleProperties)
         propertyCollectionView.reloadData()
     }
+    func collectionView(_ collectionView: UICollectionView, didHighlightItemAt indexPath: IndexPath) {
+        //collectionView.deselectItem(at: indexPath, animated: true)
+        let detailVC = PropertyDetailViewController()
+        let propertyHere: Property
+        propertyHere = activeProperties[indexPath.item]
+        detailVC.propertyH = propertyHere
+//        detailVC.latitude = propertyHere.propertyLatitude
+//        detailVC.longitude = propertyHere.propertyLongitude
+//        detailVC.propertyNameLabel.text = propertyHere.propertyName
+//        detailVC.propertyPriceLabel.text = "\(propertyHere.propertyPrice)"
+//        detailVC.propertyDescriptionLabel.text = propertyHere.propertyDescription
+//        detailVC.propertyImageView.image = propertyHere.propertyImage
+        let nav = UINavigationController(rootViewController: detailVC)
+        present(nav, animated: true, completion: nil)
+
+    }
 
     /*
     // MARK: - Navigation

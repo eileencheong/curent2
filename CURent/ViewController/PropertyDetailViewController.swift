@@ -12,13 +12,10 @@ import GooglePlaces
 
 class PropertyDetailViewController: UIViewController {
 
-    var propertyName: String = "Name"
-    var propertyAddress: String = "Address, Address"
-    var propertyPrice: String = "10000.00"
-    var propertyDescription: String = "This is a sample description."
-    
-    var latitude: Double = 100.00
-    var longitude: Double = 100.00
+//    var propertyName: String = "Name"
+//    var propertyAddress: String = "Address, Address"
+//    var propertyPrice: String = "10000.00"
+//    var propertyDescription: String = "This is a sample description."
     
     var propertyNameLabel: UILabel!
     var propertyImageView: UIImageView!
@@ -26,20 +23,26 @@ class PropertyDetailViewController: UIViewController {
     var propertyAddressLabel: UILabel!
     var openMapButton: UIButton!
     var propertyDescriptionLabel: UILabel!
+    var propertyH : Property?
 
+    var latitude: Double = 100.0
+    var longitude: Double = 100.0
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         view.backgroundColor = .white
         
-        title = propertyName
+        title = propertyH?.propertyName
         
         navigationController?.isNavigationBarHidden = false
         navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(closeView))
         
+        latitude = (propertyH?.propertyLatitude)!
+        longitude = (propertyH?.propertyLongitude)!
+        
         propertyNameLabel = UILabel()
-        propertyNameLabel.text = propertyName
+        propertyNameLabel.text = propertyH?.propertyName
         propertyNameLabel.font = UIFont.boldSystemFont(ofSize: 22)
         propertyNameLabel.textColor = .gray
         propertyNameLabel.textAlignment = .center
@@ -47,7 +50,7 @@ class PropertyDetailViewController: UIViewController {
         view.addSubview(propertyNameLabel)
         
         propertyAddressLabel = UILabel()
-        propertyAddressLabel.text = propertyAddress
+        propertyAddressLabel.text = propertyH?.propertyAddress
         propertyAddressLabel.font = UIFont.boldSystemFont(ofSize: 12)
         propertyAddressLabel.textColor = UIColor.lightGray
         propertyAddressLabel.textAlignment = .center
@@ -55,7 +58,7 @@ class PropertyDetailViewController: UIViewController {
         view.addSubview(propertyAddressLabel)
         
         propertyImageView = UIImageView()
-        propertyImageView.image = #imageLiteral(resourceName: "placeholder_img")
+        propertyImageView.image = propertyH?.propertyImage
         propertyImageView.layer.cornerRadius = 10
         propertyImageView.clipsToBounds = true
         propertyImageView.contentMode = .scaleAspectFill
@@ -63,7 +66,7 @@ class PropertyDetailViewController: UIViewController {
         view.addSubview(propertyImageView)
         
         propertyPriceLabel = UILabel()
-        propertyPriceLabel.text = propertyPrice
+        propertyPriceLabel.text = propertyH?.priceSymbol()
         propertyPriceLabel.font = UIFont.boldSystemFont(ofSize: 18)
         propertyPriceLabel.textColor = UIColor.lightGray
         propertyPriceLabel.textAlignment = .center
@@ -71,7 +74,7 @@ class PropertyDetailViewController: UIViewController {
         view.addSubview(propertyPriceLabel)
         
         propertyDescriptionLabel = UILabel()
-        propertyDescriptionLabel.text = propertyDescription
+        propertyDescriptionLabel.text = propertyH?.propertyDescription
         propertyDescriptionLabel.font = UIFont.systemFont(ofSize: 12)
         propertyDescriptionLabel.textColor = UIColor.lightGray
         propertyDescriptionLabel.lineBreakMode = .byWordWrapping
