@@ -28,6 +28,8 @@ class AddPropertyViewController: UIViewController, UIImagePickerControllerDelega
     
     var propertyCoordinates: CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: 100.00, longitude: 100.00)
     
+    var delegate: SaveButtonDelegate?
+    
     let autocompleteViewController = GMSAutocompleteViewController()
     
     
@@ -214,6 +216,7 @@ class AddPropertyViewController: UIViewController, UIImagePickerControllerDelega
         if (check) {
             var newProperty: Property
             newProperty = Property(propertyName: propertyNameField.text!, propertyImage: propertyImageView.image!, propertyPrice: Double(propertyPriceField.text!)!, propertyLocation: .collegetown, propertyAddress: propertyAddressField.text!, propertyDescription: propertyDescriptionView.text, ownerName: GIDSignIn.sharedInstance().currentUser.profile.name, propertyLatitude:propertyCoordinates.latitude, propertyLongitude: propertyCoordinates.longitude)
+            delegate?.saveButtonPressed(withName: newProperty)
             
             var newPropertyJSON: [String : String] = [
                 "propertyName":newProperty.propertyName,
@@ -224,6 +227,7 @@ class AddPropertyViewController: UIViewController, UIImagePickerControllerDelega
                 "propertyLatitude":String(propertyCoordinates.latitude),
                 "propertyLongitude":String(propertyCoordinates.longitude)
             ]
+            dismiss(animated: true, completion: nil)
         }
         
     }
