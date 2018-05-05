@@ -43,6 +43,8 @@ class PropertyCollectionViewCell: UICollectionViewCell {
         contentView.addSubview(propertyPriceLabel)
     }
     
+    
+    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
