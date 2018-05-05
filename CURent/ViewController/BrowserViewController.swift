@@ -10,7 +10,12 @@ import UIKit
 import GoogleSignIn
 import ChameleonFramework
 
-class BrowserViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+protocol SaveButtonDelegate {
+    func saveButtonPressed(withName propertyAdd: Property)
+}
+
+class BrowserViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, SaveButtonDelegate {
+    
 
     //SECTION: Preparing GIDUser attributes
     var welcomeLabel: UILabel!
@@ -228,6 +233,7 @@ class BrowserViewController: UIViewController, UICollectionViewDataSource, UICol
     
     @objc func submitListingButtonPressed() {
         let vc = AddPropertyViewController()
+        vc.delegate = self
         let nav = UINavigationController(rootViewController: vc)
         present(nav, animated: true, completion: nil)
     }
@@ -273,6 +279,11 @@ class BrowserViewController: UIViewController, UICollectionViewDataSource, UICol
             
             return !(placeFilteredOut || costFilteredOut)
         })
+    }
+    func saveButtonPressed(withName propertyAdd: Property) {
+        sampleProperties.append(propertyAdd)
+        print(sampleProperties)
+        propertyCollectionView.reloadData()
     }
 
     /*
