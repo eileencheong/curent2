@@ -16,6 +16,7 @@ func createInitialPropertyArray() -> [Property] {
     returnArray.append(property0)
     returnArray.append(property0)
     returnArray.append(property0)
+    returnArray.append(property1)
 //    returnArray.append(property0)
 //    returnArray.append(property2)
 //    returnArray.append(property3)
@@ -27,3 +28,4 @@ func createInitialPropertyArray() -> [Property] {
 }
 
 let property0: Property = Property(propertyName: "Property 0", propertyImage: #imageLiteral(resourceName: "p0"), propertyPrice: 1000, propertyLocation: .collegetown, propertyAddress: "Sample Address", propertyDescription: "This is a description.", ownerName: "Sample First Name", propertyLatitude: 100.00, propertyLongitude: 100.00)
+let property1: Property = Property(propertyName: "idkthename", propertyImage: #imageLiteral(resourceName: "p2"), propertyPrice: 240, propertyLocation: .collegetown, propertyAddress: "idk", propertyDescription: "desca;lskdfn", ownerName: "umme?", propertyLatitude: 122.0, propertyLongitude: 133.0)

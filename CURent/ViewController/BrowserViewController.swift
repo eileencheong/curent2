@@ -16,6 +16,8 @@ protocol SaveButtonDelegate {
 
 class BrowserViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, SaveButtonDelegate {
     
+    let property0: Property = Property(propertyName: "Property 0", propertyImage: #imageLiteral(resourceName: "p0"), propertyPrice: 1000, propertyLocation: .collegetown, propertyAddress: "Sample Address", propertyDescription: "This is a description.", ownerName: "Sample First Name", propertyLatitude: 100.00, propertyLongitude: 100.00)
+    let property1: Property = Property(propertyName: "idkthename", propertyImage: #imageLiteral(resourceName: "p2"), propertyPrice: 240, propertyLocation: .collegetown, propertyAddress: "idk", propertyDescription: "desca;lskdfn", ownerName: "umme?", propertyLatitude: 122.0, propertyLongitude: 133.0)
 
     //SECTION: Preparing GIDUser attributes
     var welcomeLabel: UILabel!
@@ -48,7 +50,8 @@ class BrowserViewController: UIViewController, UICollectionViewDataSource, UICol
         view.backgroundColor = .white
         title = "Browse"
         
-        sampleProperties = createInitialPropertyArray()
+        sampleProperties.append(property0)
+        sampleProperties.append(property1)
         activeProperties = sampleProperties
         filters.append(contentsOf: PropertyPrice.allValues().map({ f in f as Filter}))
         filters.append(contentsOf: PropertyLocation.allValues().map({ f in f as Filter}))
@@ -284,6 +287,24 @@ class BrowserViewController: UIViewController, UICollectionViewDataSource, UICol
         sampleProperties.append(propertyAdd)
         print(sampleProperties)
         propertyCollectionView.reloadData()
+    }
+    func collectionView(_ collectionView: UICollectionView, didHighlightItemAt indexPath: IndexPath) {
+        //collectionView.deselectItem(at: indexPath, animated: true)
+        if (collectionView == propertyCollectionView) {
+            let detailVC = PropertyDetailViewController()
+            let propertyHere: Property
+            propertyHere = activeProperties[indexPath.item]
+            detailVC.propertyH = propertyHere
+//        detailVC.latitude = propertyHere.propertyLatitude
+//        detailVC.longitude = propertyHere.propertyLongitude
+//        detailVC.propertyNameLabel.text = propertyHere.propertyName
+//        detailVC.propertyPriceLabel.text = "\(propertyHere.propertyPrice)"
+//        detailVC.propertyDescriptionLabel.text = propertyHere.propertyDescription
+//        detailVC.propertyImageView.image = propertyHere.propertyImage
+            let nav = UINavigationController(rootViewController: detailVC)
+            present(nav, animated: true, completion: nil)
+        }
+
     }
 
     /*
