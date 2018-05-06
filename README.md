@@ -10,9 +10,9 @@ Link to backend repository: (https://github.com/jpang7/A2)
 
 ## Description
 
-This app will provide users with a one-stop interface for exploring housing options around Cornell University. House owners can list their property on the app. Tenants will be able to contact the house owners to rent the entire property, or find subletting options. Users will also be able to form groups to sublet a listed property together.
+This app will provide users with a one-stop interface for exploring housing options around Cornell University. House owners can list their property on the app. Tenants will be able to contact the house owners to rent the entire property, or find subletting options.
 
-Organized using Autolayout, a UICollectionView displays nearby housing options. A pop up page (Modal VC) pops up when  each CollectionViewCell is pressed, where more information about the housing option, and an option to contact the owner will be displayed.
+The app uses a Google Maps Geocoding Autocompletion API to let users type in a part of their property address, then select the most relevant one from a list provided by Google.
 
 
 ## Challenge Requirement Compliance
