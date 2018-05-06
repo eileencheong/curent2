@@ -6,11 +6,13 @@ Link to backend repository: (https://github.com/jpang7/A2)
 
 ## Feature highlights
 
+* Launch Screen - (https://drive.google.com/file/d/1SUznNrfrYebasE9H_7DU2s02KMmPUcp9/view?usp=sharing)
 * Login Screen - (https://drive.google.com/open?id=17kvfbrSh5eZZDxbsTl0pW1PFajfimNjD)
 * Main Screen, Property Browser - (https://drive.google.com/open?id=1rvA6TVmA2L29dYIXt31rHO64CtR1TK2w)
 * Property Browser Filtering Feature Demo - (https://drive.google.com/open?id=14w0xFx3piBFdQzpG-pwVbtEmDXXO5qE9)
 * Add Property Screen - (https://drive.google.com/open?id=1G1pRjgUAp3sXddMLjaMAnij5G1Gk_M-a)
 * Google Geocoding Autocompletion API Demo - (https://drive.google.com/open?id=1JlQDxWnwumoGOGLrjpR7EbHy1jKczBLa)
+* Property Detail Screen - (https://drive.google.com/open?id=1S0mLsxKKHv2BTo77nhfzbyJAYsk7NGxk)
 
 
 ## Description
