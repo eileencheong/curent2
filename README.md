@@ -2,16 +2,22 @@
 
 Peer-to-peer subleasing platform for Cornellians
 
+Link to backend repository: (https://github.com/jpang7/A2)
+
 ## Feature highlights
 
 //Placeholder
 
 ## Description
 
-//Placeholder
+This app will provide users with a one-stop interface for exploring housing options around Cornell University. House owners can list their property on the app. Tenants will be able to contact the house owners to rent the entire property, or find subletting options.
+
+The app uses a Google Maps Geocoding Autocompletion API to let users type in a part of their property address, then select the most relevant one from a list provided by Google.
 
 
 ## Challenge Requirement Compliance
+
+The following requirements have been fulfilled by this app:
 
 ### Views and Navigation ###
 * Uses Autolayout for all views
@@ -27,10 +33,7 @@ Peer-to-peer subleasing platform for Cornellians
 
 ## Additional Important Information for Grader
 
-The following requirements have been fulfilled by this app:
-
-//Placeholder
-
+The connection to backend hasn't been implemented yet.
 
 ## Contributors
 * **Jaewon Sim** - *iOS Development*
