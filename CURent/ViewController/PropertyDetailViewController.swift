@@ -133,8 +133,7 @@ class PropertyDetailViewController: UIViewController {
             ])
         
         NSLayoutConstraint.activate([
-            propertyDescriptionLabel.leadingAnchor.constraint(equalTo: propertyNameLabel.leadingAnchor),
-            propertyDescriptionLabel.trailingAnchor.constraint(equalTo: propertyNameLabel.trailingAnchor),
+            propertyDescriptionLabel.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
             propertyDescriptionLabel.topAnchor.constraint(equalTo: propertyPriceLabel.bottomAnchor, constant: 18),
             propertyDescriptionLabel.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -32),
             propertyDescriptionLabel.heightAnchor.constraint(equalToConstant: propertyDescriptionLabel.intrinsicContentSize.height)
