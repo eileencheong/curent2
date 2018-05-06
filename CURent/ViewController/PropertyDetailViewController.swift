@@ -98,42 +98,46 @@ class PropertyDetailViewController: UIViewController {
     func setUpConstraints() {
         
         NSLayoutConstraint.activate([
-            propertyNameLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 18),
-            propertyNameLabel.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -18),
-            propertyNameLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 12)
+//            propertyNameLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 18),
+//            propertyNameLabel.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -18),
+            propertyNameLabel.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
+            propertyNameLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 12),
+            propertyNameLabel.heightAnchor.constraint(equalToConstant: propertyNameLabel.intrinsicContentSize.height)
             ])
         
         NSLayoutConstraint.activate([
-            propertyAddressLabel.leadingAnchor.constraint(equalTo: propertyNameLabel.leadingAnchor),
-            propertyAddressLabel.trailingAnchor.constraint(equalTo: propertyNameLabel.trailingAnchor),
-            propertyAddressLabel.topAnchor.constraint(equalTo: propertyNameLabel.bottomAnchor, constant: 12)
+            propertyAddressLabel.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
+            propertyAddressLabel.topAnchor.constraint(equalTo: propertyNameLabel.bottomAnchor, constant: 18),
+            propertyAddressLabel.heightAnchor.constraint(equalToConstant: propertyAddressLabel.intrinsicContentSize.height)
             ])
         
         NSLayoutConstraint.activate([
-            openMapButton.leadingAnchor.constraint(equalTo: propertyNameLabel.leadingAnchor),
-            openMapButton.trailingAnchor.constraint(equalTo: propertyNameLabel.trailingAnchor),
-            openMapButton.topAnchor.constraint(equalTo: propertyAddressLabel.bottomAnchor, constant: 12)
+            openMapButton.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
+            openMapButton.topAnchor.constraint(equalTo: propertyAddressLabel.bottomAnchor, constant: 12),
+            openMapButton.heightAnchor.constraint(equalToConstant: openMapButton.intrinsicContentSize.height)
             ])
         
         NSLayoutConstraint.activate([
-            propertyImageView.leadingAnchor.constraint(equalTo: propertyNameLabel.leadingAnchor),
-            propertyImageView.trailingAnchor.constraint(equalTo: propertyNameLabel.trailingAnchor),
+            propertyImageView.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
             propertyImageView.topAnchor.constraint(equalTo: openMapButton.bottomAnchor, constant: 24),
-            propertyImageView.bottomAnchor.constraint(equalTo: propertyImageView.topAnchor, constant: 200)
+            propertyImageView.bottomAnchor.constraint(equalTo: propertyImageView.topAnchor, constant: 200),
+            propertyImageView.heightAnchor.constraint(equalToConstant: propertyImageView.intrinsicContentSize.height)
             ])
         
 
         NSLayoutConstraint.activate([
             propertyPriceLabel.leadingAnchor.constraint(equalTo: propertyNameLabel.leadingAnchor),
             propertyPriceLabel.trailingAnchor.constraint(equalTo: propertyNameLabel.trailingAnchor),
-            propertyPriceLabel.topAnchor.constraint(equalTo: propertyImageView.bottomAnchor, constant: 18)
+            propertyPriceLabel.topAnchor.constraint(equalTo: propertyImageView.bottomAnchor, constant: 18),
+            propertyPriceLabel.heightAnchor.constraint(equalToConstant: propertyPriceLabel.intrinsicContentSize.height)
             ])
         
         NSLayoutConstraint.activate([
             propertyDescriptionLabel.leadingAnchor.constraint(equalTo: propertyNameLabel.leadingAnchor),
             propertyDescriptionLabel.trailingAnchor.constraint(equalTo: propertyNameLabel.trailingAnchor),
             propertyDescriptionLabel.topAnchor.constraint(equalTo: propertyPriceLabel.bottomAnchor, constant: 18),
-            propertyDescriptionLabel.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -32)
+            propertyDescriptionLabel.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -32),
+            propertyDescriptionLabel.heightAnchor.constraint(equalToConstant: propertyDescriptionLabel.intrinsicContentSize.height)
             ])
     }
     
