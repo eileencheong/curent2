@@ -50,8 +50,7 @@ class BrowserViewController: UIViewController, UICollectionViewDataSource, UICol
         view.backgroundColor = .white
         title = "Browse"
         
-        sampleProperties.append(property0)
-        sampleProperties.append(property1)
+        sampleProperties = createInitialPropertyArray()
         activeProperties = sampleProperties
         filters.append(contentsOf: PropertyPrice.allValues().map({ f in f as Filter}))
         filters.append(contentsOf: PropertyLocation.allValues().map({ f in f as Filter}))
@@ -75,7 +74,7 @@ class BrowserViewController: UIViewController, UICollectionViewDataSource, UICol
         //SECTION: Welcome Label
         welcomeLabel = UILabel()
         welcomeLabel.text = "Hi, \(userGivenName ?? "")!"
-        welcomeLabel.textColor = UIColor.gray
+        welcomeLabel.textColor = UIColor.black
         welcomeLabel.font = UIFont.systemFont(ofSize: 28, weight: .bold)
         welcomeLabel.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(welcomeLabel)

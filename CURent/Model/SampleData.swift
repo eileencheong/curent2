@@ -13,10 +13,10 @@ func createInitialPropertyArray() -> [Property] {
     returnArray.append(property0)
     returnArray.append(property0)
     returnArray.append(property0)
-    returnArray.append(property0)
-    returnArray.append(property0)
-    returnArray.append(property0)
     returnArray.append(property1)
+    returnArray.append(property2)
+    returnArray.append(property3)
+    returnArray.append(property4)
 //    returnArray.append(property0)
 //    returnArray.append(property2)
 //    returnArray.append(property3)
@@ -28,4 +28,7 @@ func createInitialPropertyArray() -> [Property] {
 }
 
 let property0: Property = Property(propertyName: "Property 0", propertyImage: #imageLiteral(resourceName: "p0"), propertyPrice: 1000, propertyLocation: .collegetown, propertyAddress: "Sample Address", propertyDescription: "This is a description.", ownerName: "Sample First Name", propertyLatitude: 100.00, propertyLongitude: 100.00)
-let property1: Property = Property(propertyName: "idkthename", propertyImage: #imageLiteral(resourceName: "p2"), propertyPrice: 240, propertyLocation: .collegetown, propertyAddress: "idk", propertyDescription: "desca;lskdfn", ownerName: "umme?", propertyLatitude: 122.0, propertyLongitude: 133.0)
+let property1: Property = Property(propertyName: "Sample Property A", propertyImage: #imageLiteral(resourceName: "p2"), propertyPrice: 240, propertyLocation: .downtown, propertyAddress: "312 College Avenue", propertyDescription: "This is a description.", ownerName: "John Doe", propertyLatitude: 122.0, propertyLongitude: 133.0)
+let property2: Property = Property(propertyName: "Sample Property B", propertyImage: #imageLiteral(resourceName: "p2"), propertyPrice: 240, propertyLocation: .northCampus, propertyAddress: "312 College Avenue", propertyDescription: "This is a description.", ownerName: "John Doe", propertyLatitude: 122.0, propertyLongitude: 133.0)
+let property3: Property = Property(propertyName: "Sample Property C", propertyImage: #imageLiteral(resourceName: "p2"), propertyPrice: 240, propertyLocation: .other, propertyAddress: "312 College Avenue", propertyDescription: "This is a description.", ownerName: "John Doe", propertyLatitude: 122.0, propertyLongitude: 133.0)
+let property4: Property = Property(propertyName: "Sample Property D", propertyImage: #imageLiteral(resourceName: "p2"), propertyPrice: 240, propertyLocation: .collegetown, propertyAddress: "312 College Avenue", propertyDescription: "This is a description.", ownerName: "John Doe", propertyLatitude: 122.0, propertyLongitude: 133.0)
